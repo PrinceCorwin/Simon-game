@@ -22,6 +22,7 @@ body {
 #title {
   border: solid 2px white;
   color: red;
+  cursor: pointer;
 }
 
 .console {

@@ -37,7 +37,7 @@ body {
     black,
     rgb(77, 77, 77)
   );
-  box-shadow: 0 0 10px 2px var(--clr-primary);
+  box-shadow: 5px 5px 10px rgb(209, 209, 209);
 
   font-family: var(--ff-accent);
   display: flex;
@@ -47,6 +47,10 @@ body {
   /* width: 250px; */
 
   padding: 0 15px 15px 15px;
+  border-top: solid rgb(63, 55, 55) 2px;
+  border-right: solid rgb(202, 202, 202) 2px;
+  border-bottom: solid rgb(202, 202, 202) 2px;
+  border-left: solid black 2px;
   border-radius: 10px;
 }
 .stats-title {
@@ -112,12 +116,22 @@ body {
 #start {
   margin-top: 20px;
   padding: 5px 20px;
-  border: solid 4px var(--clr-primary);
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 1px blanchedalmond;
+  /* border: solid 4px var(--clr-primary); */
+  background-image: linear-gradient(to top, black, rgb(77, 77, 77));
+  box-shadow: 2px 2px 5px white;
   border-radius: 30px;
   color: red;
   font-family: var(--ff-primary);
   font-size: 2rem;
   cursor: pointer;
+}
+.noStart {
+  visibility: hidden;
+}
+#start:hover {
+  background-image: linear-gradient(to bottom, black, rgb(77, 77, 77));
 }
 .console-row {
   width: 100%;
@@ -128,8 +142,8 @@ body {
 .console {
   position: relative;
   background-color: black;
-  box-shadow: 0 0 20px 10px var(--clr-primary);
-
+  box-shadow: 0 0 20px 10px rgb(155, 155, 155);
+  /* box-shadow: 10px 10px 15px rgb(99, 99, 99); */
   border-radius: 50%;
   display: grid;
   grid-template-columns: 200px 200px;
@@ -140,6 +154,12 @@ body {
 .btn {
   cursor: pointer;
   opacity: 0.8;
+}
+.green,
+.red,
+.yellow,
+.blue {
+  transition: transform 0.15s ease-in-out;
 }
 .green {
   background-color: rgb(2, 196, 2);
@@ -178,7 +198,6 @@ body {
   border-right: solid black 2px; */
   box-shadow: inset 1px 1px 5px rgb(248, 248, 131), inset -1px -1px 10px black;
 }
-
 .pressed {
   box-shadow: 0 0 20px white, inset 1px 1px 5px rgb(75, 73, 73);
   opacity: 1;

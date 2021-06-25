@@ -10,31 +10,34 @@ let allSounds = [
   "./sounds/yellow.mp3",
   "./sounds/blue.mp3",
 ];
+let complete = false;
 // preload audio files to negate delay
 let audio = new Audio("./sounds/green.mp3");
 audio = new Audio("./sounds/blue.mp3");
 audio = new Audio("./sounds/yellow.mp3");
 audio = new Audio("./sounds/red.mp3");
 audio = new Audio("./sounds/wrong.mp3");
+
+// start button event listener
 function listenForStart() {
   $("#start").on("click", function () {
-    document.getElementById("start").innerText = "PLAY AGAIN";
-    // document.getElementById("score").innerText = "";
-    // document.getElementById("result").innerText = "";
-    counter = 0;
-    colorArray = [];
-    audioArray = [];
+    $("#start").text("PLAY AGAIN");
     $("#start").off("click");
+    $("#start").addClass("noStart");
+    // gameOver();
     simonPlay();
   });
 }
+
 listenForStart();
 
+// event listener for player clisks on colors
 function listenForPlayer() {
   $(".btn").click(function (event) {
     playerPlay(event);
   });
 }
+
 // simonPlay function
 function simonPlay() {
   counter = 0;
@@ -47,6 +50,7 @@ function simonPlay() {
   audioArray.push(allSounds[rndNum]);
 
   console.log(colorArray, audioArray);
+  // loop through current simon array and light up colors then listen for player click
   for (let i = 0; i < colorArray.length; i++) {
     setTimeout(() => {
       $("#" + colorArray[i]).addClass("pressed");
@@ -59,13 +63,13 @@ function simonPlay() {
     if (i === colorArray.length - 1) {
       setTimeout(() => {
         listenForPlayer();
-        document.getElementById("result").innerText = "";
+        $("#result").text("");
       }, 500 * i + 500);
     }
   }
 }
 
-//   player's turn
+//   action when player clicks color (check vs simon pattern)
 function playerPlay(event) {
   console.log("event id: " + event.target.id);
   $("#" + event.target.id).addClass("player-pressed");
@@ -78,21 +82,23 @@ function playerPlay(event) {
   } else {
     audio = new Audio("./sounds/wrong.mp3");
     audio.play();
-    document.getElementById("result").innerText = "POORLY!";
+    $("#result").text("POORLY!");
+    $("#score").text(`${colorArray.length - 1}`);
     gameOver();
     return;
   }
   console.log("counter: " + counter);
   console.log(colorArray.length - 1);
+  // check if color clicked is correct according to simon pattern at current index
   if (counter === colorArray.length - 1) {
     $(".btn").off("click");
-    document.getElementById("result").innerText = "WISELY!";
-    document.getElementById("score").innerText = counter + 1;
+    // update player stats
+    $("#result").text("WISELY!");
+    $("#score").text(`${counter + 1}`);
     simonPlay();
     return;
   }
   counter++;
-  // return;
 }
 
 // GAME OVER FUNCTION
@@ -101,13 +107,12 @@ function gameOver() {
   counter = 0;
   colorArray = [];
   audioArray = [];
+  $("#start").removeClass("noStart");
   $("#start").on("click", function () {
-    document.getElementById("score").innerText = "";
-    document.getElementById("result").innerText = "";
-
-    // $("#start").off("click");
+    $("#score").text("");
+    $("#result").text("");
+    $("#start").addClass("noStart");
+    $("#start").off("click");
     simonPlay();
   });
 }
-// show player stats
-// run keyListen

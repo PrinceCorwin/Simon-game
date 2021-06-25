@@ -12,20 +12,21 @@ let allSounds = [
 ];
 // preload audio files to negate delay
 let audio = new Audio("./sounds/green.mp3");
-// audio = new Audio("./sounds/blue.mp3");
-// audio = new Audio("./sounds/yellow.mp3");
-// audio = new Audio("./sounds/red.mp3");
-// audio = new Audio("./sounds/wrong.mp3");
+audio = new Audio("./sounds/blue.mp3");
+audio = new Audio("./sounds/yellow.mp3");
+audio = new Audio("./sounds/red.mp3");
+audio = new Audio("./sounds/wrong.mp3");
 function listenForStart() {
-  $("#title").on("click", function () {
-    $("#title").off("click");
+  $("#start").on("click", function () {
+    document.getElementById("start").innerText = "PLAY AGAIN";
+    $("#start").off("click");
     simonPlay();
   });
 }
 listenForStart();
 
 function listenForPlayer() {
-  $("button").click(function (event) {
+  $(".btn").click(function (event) {
     playerPlay(event);
   });
 }
@@ -51,10 +52,11 @@ function simonPlay() {
       setTimeout(() => {
         $("." + colorArray[i]).removeClass("pressed");
       }, 200);
-    }, 500 * i + 500);
+    }, 500 * i + 1000);
     if (i === colorArray.length - 1) {
       setTimeout(() => {
         listenForPlayer();
+        document.getElementById("result").innerText = "";
       }, 500 * i + 500);
     }
   }
@@ -63,9 +65,9 @@ function simonPlay() {
 //   player's turn
 function playerPlay(event) {
   console.log("event id: " + event.target.id);
-  $("#" + event.id).addClass("pressed");
+  $("#" + event.target.id).addClass("player-pressed");
   setTimeout(() => {
-    $("#" + event.target.id).removeClass("pressed");
+    $("#" + event.target.id).removeClass("player-pressed");
   }, 200);
   if (event.target.id === colorArray[counter]) {
     audio = new Audio("./sounds/" + event.target.id + ".mp3");
@@ -73,14 +75,16 @@ function playerPlay(event) {
   } else {
     audio = new Audio("./sounds/wrong.mp3");
     audio.play();
+    document.getElementById("result").innerText = "POORLY!";
     gameOver();
     return;
   }
   console.log("counter: " + counter);
   console.log(colorArray.length - 1);
   if (counter === colorArray.length - 1) {
-    $("button").off("click");
-
+    $(".btn").off("click");
+    document.getElementById("result").innerText = "WISELY!";
+    document.getElementById("score").innerText = counter + 1;
     simonPlay();
     return;
   }
@@ -90,12 +94,15 @@ function playerPlay(event) {
 
 // GAME OVER FUNCTION
 function gameOver() {
-  $("button").off("click");
+  $(".btn").off("click");
   counter = 0;
   colorArray = [];
   audioArray = [];
-  $("#title").on("click", function () {
-    $("#title").off("click");
+  $("#start").on("click", function () {
+    document.getElementById("score").innerText = "";
+    document.getElementById("result").innerText = "";
+
+    $("#start").off("click");
     simonPlay();
   });
 }

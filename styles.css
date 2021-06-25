@@ -1,12 +1,8 @@
 /* roots and customs */
 :root {
-  --clr-primary: ;
-  --clr-midtone: ;
-  --clr-darktone: ;
-  --clr-contrast1: ;
-  --clr-contrast2: ;
-  --ff-primary: ;
-  --ff-accent: ;
+  --clr-primary: rgb(228, 228, 228);
+  --ff-primary: "Big Shoulders Stencil Display", cursive;
+  --ff-accent: "Ubuntu", sans-serif;
 }
 
 *,
@@ -17,47 +13,158 @@
   padding: 0;
 }
 body {
+  color: var(--clr-primary);
   background-color: black;
 }
-#title {
-  border: solid 2px white;
+.container {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.stats {
+  font-family: var(--ff-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 250px;
+
+  padding: 0 10px 10px 10px;
+  border: solid white 2px;
+  border-radius: 10px;
+}
+.stats-title {
+  border-radius: 10px 10px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 246px;
+  background-color: rgb(77, 77, 77);
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+.p {
   color: red;
-  cursor: pointer;
+}
+.l {
+  color: rgb(31, 226, 31);
+}
+.a {
+  color: yellow;
+}
+.y {
+  color: rgb(53, 53, 255);
+}
+.e {
+  color: red;
+}
+.r {
+  color: rgb(31, 226, 31);
+  margin-right: 10px;
+}
+.s {
+  color: yellow;
+}
+.t {
+  color: blue;
+}
+.aa {
+  color: red;
+}
+.tt {
+  color: rgb(31, 226, 31);
+}
+.ss {
+  color: yellow;
+}
+.stat-row {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.console {
-  width: 500px;
-  height: 500px;
+#title {
+  text-align: center;
+  font-family: var(--ff-primary);
+  font-size: 3rem;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
 }
+#start {
+  margin-top: 20px;
+  padding: 5px 20px;
+  border: solid 4px var(--clr-primary);
+  border-radius: 30px;
+  color: red;
+  font-family: var(--ff-primary);
+  font-size: 2rem;
+  cursor: pointer;
+}
+.console-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.console {
+  position: relative;
+  background-color: var(--clr-primary);
+  box-shadow: 0 0 20px 10px white;
+
+  border-radius: 50%;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  width: 400px;
+  height: 400px;
+}
+
 .btn {
   cursor: pointer;
-  width: 45%;
-  height: 45%;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .green {
   background-color: green;
-  border-radius: 100% 15px 15px 15px;
+  border-radius: 100% 10px 10px 10px;
+  border-right: solid rgb(1, 77, 1) 3px;
+  border-bottom: solid rgb(1, 77, 1) 3px;
+  box-shadow: inset 1px 1px 15px 5px rgb(0, 56, 0);
 }
 
 .red {
   background-color: red;
-  border-radius: 15px 100% 15px 15px;
+
+  box-shadow: inset 1px 1px 15px 5px rgb(122, 1, 1);
+  border-radius: 10px 100% 10px 10px;
 }
 
 .blue {
   background-color: blue;
-  border-radius: 15px 15px 100% 15px;
+  border-radius: 10px 10px 100% 10px;
+  border-top: solid black 2px;
+  border-left: solid black 2px;
+  box-shadow: inset 1px 1px 15px 5px rgb(1, 1, 82);
 }
 
 .yellow {
   background-color: yellow;
-  border-radius: 15px 15px 15px 100%;
+  border-radius: 10px 10px 10px 100%;
+  border-top: solid black 2px;
+  border-right: solid black 2px;
+  box-shadow: inset 1px 1px 15px 5px rgb(71, 71, 1);
 }
 
 .pressed {
   box-shadow: 0 0 20px white;
-  /* background-color: grey; */
   opacity: 1;
   transform: scale(1.05);
+}
+.player-pressed {
+  box-shadow: inset 1px 1px 15px 5px rgb(75, 73, 73);
+  opacity: 1;
+  transform: scale(0.95);
 }

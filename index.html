@@ -16,18 +16,42 @@
       href="https://fonts.googleapis.com/css?family=Press+Start+2P"
       rel="stylesheet"
     />
-    <!-- add link to fonts here -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700&family=Ubuntu:ital,wght@1,500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- add nav bar here -->
     <main>
       <div class="container">
-        <h1 id="title">START</h1>
-        <div class="console">
-          <button class="btn green" id="green"></button>
-          <button class="btn red" id="red"></button>
-          <button class="btn yellow" id="yellow"></button>
-          <button class="btn blue" id="blue"></button>
+        <h1 id="title">Simon Memory Game</h1>
+        <div class="console-row">
+          <div class="stats">
+            <div class="stats-title">
+              <span class="p">P</span><span class="l">l</span
+              ><span class="a">a</span><span class="y">y</span
+              ><span class="e">e</span><span class="r">r</span
+              ><span class="s">S</span><span class="t">t</span
+              ><span class="aa">a</span><span class="tt">t</span
+              ><span class="ss">s</span>
+            </div>
+            <div class="stat-row">
+              <span>You Chose:</span>
+              <span id="result"></span>
+            </div>
+            <div class="stat-row">
+              <span>Score:</span>
+              <span id="score"></span>
+            </div>
+            <div id="start">START</div>
+          </div>
+          <div class="console">
+            <div class="btn green" id="green"></div>
+            <div class="btn red" id="red"></div>
+            <div class="btn yellow" id="yellow"></div>
+            <div class="btn blue" id="blue"></div>
+          </div>
         </div>
       </div>
     </main>

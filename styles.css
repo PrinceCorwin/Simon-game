@@ -14,25 +14,39 @@
 }
 body {
   color: var(--clr-primary);
-  background-color: black;
+  background-image: linear-gradient(
+    to top left,
+    rgb(63, 41, 41),
+    black,
+    rgb(77, 77, 77)
+  );
+  background-size: auto;
 }
 .container {
-  margin-top: 40px;
+  height: 100vh;
+  /* margin-top: 40px; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 .stats {
+  background-image: linear-gradient(
+    to top,
+    rgb(63, 41, 41),
+    black,
+    rgb(77, 77, 77)
+  );
+  box-shadow: 0 0 10px 2px var(--clr-primary);
+
   font-family: var(--ff-accent);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 250px;
+  /* width: 250px; */
 
-  padding: 0 10px 10px 10px;
-  border: solid white 2px;
+  padding: 0 15px 15px 15px;
   border-radius: 10px;
 }
 .stats-title {
@@ -40,7 +54,7 @@ body {
   padding: 5px 0;
   text-align: center;
   width: 246px;
-  background-color: rgb(77, 77, 77);
+  /* background-color: rgb(77, 77, 77); */
   font-size: 2.5em;
   margin-bottom: 10px;
 }
@@ -113,8 +127,8 @@ body {
 }
 .console {
   position: relative;
-  background-color: var(--clr-primary);
-  box-shadow: 0 0 20px 10px white;
+  background-color: black;
+  box-shadow: 0 0 20px 10px var(--clr-primary);
 
   border-radius: 50%;
   display: grid;
@@ -128,42 +142,50 @@ body {
   opacity: 0.8;
 }
 .green {
-  background-color: green;
+  background-color: rgb(2, 196, 2);
   border-radius: 100% 10px 10px 10px;
-  border-right: solid rgb(1, 77, 1) 3px;
-  border-bottom: solid rgb(1, 77, 1) 3px;
-  box-shadow: inset 1px 1px 15px 5px rgb(0, 56, 0);
+  border: solid black 5px;
+
+  /* border-right: solid rgb(1, 77, 1) 3px;
+  border-bottom: solid rgb(1, 77, 1) 3px; */
+  box-shadow: inset 1px 1px 5px rgb(2, 216, 2), inset -1px -1px 10px black;
 }
 
 .red {
   background-color: red;
-
-  box-shadow: inset 1px 1px 15px 5px rgb(122, 1, 1);
+  border: solid black 5px;
+  /* box-shadow: inset 1px 1px 15px 5px rgb(122, 1, 1); */
+  box-shadow: inset 1px 1px 5px rgb(224, 126, 126), inset -1px -1px 10px black;
   border-radius: 10px 100% 10px 10px;
 }
 
 .blue {
   background-color: blue;
+  border: solid black 5px;
+
   border-radius: 10px 10px 100% 10px;
-  border-top: solid black 2px;
-  border-left: solid black 2px;
-  box-shadow: inset 1px 1px 15px 5px rgb(1, 1, 82);
+  /* border-top: solid black 2px;
+  border-left: solid black 2px; */
+  box-shadow: inset 1px 1px 5px rgb(81, 149, 252), inset -1px -1px 10px black;
 }
 
 .yellow {
   background-color: yellow;
+  border: solid black 5px;
+
   border-radius: 10px 10px 10px 100%;
-  border-top: solid black 2px;
-  border-right: solid black 2px;
-  box-shadow: inset 1px 1px 15px 5px rgb(71, 71, 1);
+  /* border-top: solid black 2px;
+  border-right: solid black 2px; */
+  box-shadow: inset 1px 1px 5px rgb(248, 248, 131), inset -1px -1px 10px black;
 }
 
 .pressed {
-  box-shadow: 0 0 20px white;
+  box-shadow: 0 0 20px white, inset 1px 1px 5px rgb(75, 73, 73);
   opacity: 1;
   transform: scale(1.05);
 }
 .player-pressed {
+  /* border: none; */
   box-shadow: inset 1px 1px 15px 5px rgb(75, 73, 73);
   opacity: 1;
   transform: scale(0.95);

@@ -19,6 +19,11 @@ audio = new Audio("./sounds/wrong.mp3");
 function listenForStart() {
   $("#start").on("click", function () {
     document.getElementById("start").innerText = "PLAY AGAIN";
+    // document.getElementById("score").innerText = "";
+    // document.getElementById("result").innerText = "";
+    counter = 0;
+    colorArray = [];
+    audioArray = [];
     $("#start").off("click");
     simonPlay();
   });
@@ -33,7 +38,7 @@ function listenForPlayer() {
 // simonPlay function
 function simonPlay() {
   counter = 0;
-
+  console.log(counter, colorArray, audioArray);
   let rndNum = Math.floor(Math.random() * 4);
 
   // push random color to colorArray and audioArray
@@ -42,8 +47,6 @@ function simonPlay() {
   audioArray.push(allSounds[rndNum]);
 
   console.log(colorArray, audioArray);
-  // create pause between color blips based on colorArray length (default time + (length*added time))
-  // light up simon (add .pressed class, then remove it) and play audio with values of colorArray and audioArray, and pause between blips
   for (let i = 0; i < colorArray.length; i++) {
     setTimeout(() => {
       $("#" + colorArray[i]).addClass("pressed");
@@ -102,7 +105,7 @@ function gameOver() {
     document.getElementById("score").innerText = "";
     document.getElementById("result").innerText = "";
 
-    $("#start").off("click");
+    // $("#start").off("click");
     simonPlay();
   });
 }

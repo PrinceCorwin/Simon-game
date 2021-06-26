@@ -220,3 +220,104 @@ body {
   opacity: 1;
   transform: scale(0.95);
 }
+/* navbar css */
+.social-links {
+  /* background-color: white; */
+  width: 50px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#home {
+  font-family: var(--ff-accent);
+  color: var(--clr-primary);
+  padding: 0 5px;
+  align-self: flex-end;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#home:hover {
+  color: rgb(2, 196, 2);
+}
+/* fab is FA icon class */
+.fab {
+  color: rgb(2, 196, 2);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.fab:hover {
+  color: blue;
+  /* opacity: 0.7; */
+}
+/* footer start */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #dcdcdc;
+  background-color: black;
+}
+footer > div {
+  padding: 1rem;
+}
+.footer-contact {
+  color: #dcdcdc;
+}
+.footer-contact-links {
+  display: flex;
+  flex-direction: column;
+}
+footer a,
+footer .fab,
+footer .fas,
+footer img {
+  /* text-decoration: none; */
+  color: lightblue;
+  transition: all 0.2s ease-in-out;
+}
+footer a:hover,
+footer .fab:hover,
+footer .fas:hover,
+footer img:hover {
+  transform: scale(1.1);
+  color: yellow;
+}
+.footer-logo {
+  width: 200px;
+}
+.footer-social {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.copyright {
+  padding: 0.5rem 0;
+}
+/* footer end */
+@media screen and (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-contact {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .social-links {
+    position: relative;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

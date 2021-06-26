@@ -1,16 +1,51 @@
 // algorithm
 // global variables
+
 let counter = 0;
 let colorArray = [];
 let audioArray = [];
-let allColors = ["green", "red", "yellow", "blue"];
+
+let letterClasses = ["#s", "#i", "#m", "#o", "#n"];
+
+let allColors = ["green", "red", "yellow", "blue", "white"];
+let intervalColors = [
+  "green",
+  "red",
+  "yellow",
+  "blue",
+  "white",
+  "green",
+  "red",
+  "yellow",
+  "blue",
+  "white",
+];
+
 let allSounds = [
   "./sounds/green.mp3",
   "./sounds/red.mp3",
   "./sounds/yellow.mp3",
   "./sounds/blue.mp3",
 ];
-let complete = false;
+
+let simonColorInterval = setInterval(interval, 250);
+let j = 4;
+function interval() {
+  // setTimeout(() => {}, 150);
+  // let rndLetter = Math.floor(Math.random() * 5);
+  // let rndColor = Math.floor(Math.random() * 6);
+  // $(letterClasses[rndLetter]).css("color", allColors[rndColor]);
+
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      $(letterClasses[i]).css("color", intervalColors[j + i]);
+    }, 50 * i);
+  }
+  j--;
+  if (j === -1) {
+    j = 4;
+  }
+}
 // preload audio files to negate delay
 let audio = new Audio("./sounds/green.mp3");
 audio = new Audio("./sounds/blue.mp3");

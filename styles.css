@@ -188,7 +188,18 @@ body {
   border-left: solid black 2px; */
   box-shadow: inset 1px 1px 5px rgb(81, 149, 252), inset -1px -1px 10px black;
 }
-
+.green-letter {
+  color: green;
+}
+.red-letter {
+  color: red;
+}
+.blue-letter {
+  color: blue;
+}
+.yellow-letter {
+  color: yellow;
+}
 .yellow {
   background-color: yellow;
   border: solid black 5px;

@@ -1,0 +1,407 @@
+/* roots and customs */
+:root {
+  --clr-primary: rgb(228, 228, 228);
+  --ff-primary: "Big Shoulders Stencil Display", cursive;
+  --ff-accent: "Ubuntu", sans-serif;
+}
+@font-face {
+  font-family: "runestone";
+  src: url("fonts/norse-webfont.woff2") format("woff2"),
+    url("fonts/norse-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: var(--clr-primary);
+  background-image: url("images/ancientTomb.png");
+  background-size: cover;
+  font-family: var(--ff-accent);
+}
+main {
+  width: 100%;
+  display: flex;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.stats {
+  /* box-shadow: 5px 5px 30px gold; */
+  backdrop-filter: blur(5px);
+
+  font-family: var(--ff-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 0 15px 15px 15px;
+  border-top: solid black 2px;
+  border-right: solid rgb(199, 185, 164) 2px;
+  border-bottom: solid rgb(199, 185, 164) 2px;
+  border-left: solid black 2px;
+  border-radius: 5px;
+  /* transform: skewX(-5deg); */
+  /* display: none; */
+}
+.stats-title {
+  font-family: runestone;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 246px;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.stat-row {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#title {
+  color: gold;
+  text-align: center;
+  font-family: runestone;
+  font-size: 5rem;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 2px rgb(85, 10, 10), -1px -1px white;
+  margin-bottom: 40px;
+}
+#start {
+  margin-top: 20px;
+  padding: 5px 20px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 1px blanchedalmond;
+  background-image: linear-gradient(to top, black, rgb(77, 77, 77));
+  box-shadow: 2px 2px 5px white;
+  /* border-radius: 30px; */
+  /* transform: skewX(10deg); */
+  color: red;
+  font-family: runestone;
+  font-weight: 900;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.noStart {
+  visibility: hidden;
+}
+#start:hover {
+  background-image: linear-gradient(to bottom, black, rgb(77, 77, 77));
+  color: gold;
+}
+.console-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.console {
+  /* background-image: url("images/runeStone.jpg");
+  background-size: cover;  */
+  /* box-shadow: 0 0 20px 10px rgb(231, 231, 231); */
+  /* border-radius: 50%; */
+  display: grid;
+  grid-template-columns: 200px 200px;
+  width: 400px;
+  height: 400px;
+  margin-left: 80px;
+}
+
+.btn {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.green,
+.red,
+.yellow,
+.blue {
+  transition: transform 0.15s ease-in-out;
+}
+.green {
+  background-image: url("images/green.png");
+  background-size: cover;
+  /* background-color: rgb(2, 196, 2); */
+  /* border-radius: 100% 10px 10px 10px; */
+  /* border: solid black 5px; */
+  /* box-shadow: inset 1px 1px 5px rgb(2, 216, 2), inset -1px -1px 10px black; */
+}
+
+.red {
+  background-image: url("images/green.png");
+  background-size: cover;
+  /* border: solid black 5px; */
+  /* box-shadow: inset 1px 1px 5px rgb(224, 126, 126), inset -1px -1px 10px black; */
+  /* border-radius: 10px 100% 10px 10px; */
+}
+
+.blue {
+  background-image: url("images/green.png");
+  background-size: cover;
+  /* border: solid black 5px; */
+  /* border-radius: 10px 10px 100% 10px; */
+  /* box-shadow: inset 1px 1px 5px rgb(81, 149, 252), inset -1px -1px 10px black; */
+}
+.yellow {
+  background-image: url("images/green.png");
+  background-size: cover;
+  /* border: solid black 5px; */
+  /* border-radius: 10px 10px 10px 100%; */
+  /* box-shadow: inset 1px 1px 5px rgb(248, 248, 131), inset -1px -1px 10px black; */
+}
+
+.green-letter {
+  color: green;
+}
+.red-letter {
+  color: red;
+}
+.blue-letter {
+  color: blue;
+}
+.yellow-letter {
+  color: yellow;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white, inset 1px 1px 5px rgb(75, 73, 73);
+  opacity: 1;
+  transform: scale(1.05);
+}
+.player-pressed {
+  box-shadow: inset 1px 1px 15px 5px rgb(75, 73, 73);
+  opacity: 1;
+  transform: scale(0.95);
+}
+/* navbar css */
+.navbar {
+  padding: 10px;
+  /* background-color: darkgray; */
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ff-primary);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#home {
+  font-family: runestone;
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#home:hover {
+  color: gold;
+}
+.main-menu {
+  /* background-color: white; */
+  /* width: 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
+  /* position: relative; */
+  cursor: pointer;
+}
+#themes {
+  font-family: runestone;
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#themes:hover {
+  color: gold;
+}
+.menu {
+  /* background-color: grey; */
+  /* padding: 10px; */
+  font-size: 1rem;
+  /* position: absolute; */
+  opacity: 0;
+  /* visibility: hidden; */
+  /* top: 3rem; */
+  /* right: 0; */
+  transition: all 0.25s ease-in-out;
+}
+.singleTheme {
+  padding: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(51, 51, 51),
+    rgb(114, 114, 114)
+  );
+}
+#runeTheme {
+  color: gold;
+  border: solid 1px white;
+}
+#simonTheme {
+  letter-spacing: 1px;
+  color: cyan;
+  /* text-shadow: 1px 1px 1px red; */
+}
+#threeTheme {
+  color: magenta;
+}
+/* fab is FA icon class */
+.fab {
+  margin-top: 20px;
+  color: gold;
+  cursor: pointer;
+  transition: 0.3s;
+  /* box-shadow: 5px 5px 5px gold;*/
+}
+
+.fab:hover {
+  color: var(--clr-primary);
+}
+/* footer start */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #dcdcdc;
+  background-color: black;
+}
+footer > div {
+  padding: 1rem;
+}
+.footer-contact {
+  color: #dcdcdc;
+}
+.footer-contact-links {
+  display: flex;
+  flex-direction: column;
+}
+footer a,
+footer .fab,
+footer .fas,
+footer img {
+  /* text-decoration: none; */
+  color: lightblue;
+  transition: all 0.2s ease-in-out;
+}
+footer a:hover,
+footer .fab:hover,
+footer .fas:hover,
+footer img:hover {
+  transform: scale(1.1);
+  color: yellow;
+}
+.footer-logo {
+  width: 200px;
+}
+.footer-social {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.copyright {
+  padding: 0.5rem 0;
+}
+/* footer end */
+@media screen and (max-width: 1000px) {
+  .main-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-contact {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  main {
+    flex-direction: column;
+  }
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(66, 40, 40),
+      rgb(20, 17, 17)
+    );
+  }
+  .navbar .fab {
+    display: none;
+    margin-top: 0;
+    /* margin-left: 5px; */
+  }
+
+  #home {
+    letter-spacing: 2px;
+    padding: 0;
+    align-self: center;
+    font-size: 1.5rem;
+  }
+  .fab {
+    font-size: 1.5rem;
+  }
+  .container {
+    justify-content: flex-start;
+    padding: 10px 0 0 0;
+    margin-top: 0;
+  }
+  .stats {
+    margin-top: 20px;
+    width: 250px;
+
+    padding: 10px 5px 15px 5px;
+  }
+  .stats-title {
+    position: absolute;
+    visibility: hidden;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+  .stat-row {
+    font-size: 1em;
+  }
+  #title {
+    font-size: 5rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+  }
+  #start {
+    margin-top: 5px;
+    letter-spacing: 2px;
+    font-size: 1rem;
+  }
+  .console {
+    grid-template-columns: 150px 150px;
+    width: 300px;
+    height: 300px;
+    margin-left: 0;
+  }
+  .console-row {
+    flex-direction: column-reverse;
+  }
+}

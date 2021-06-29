@@ -5,6 +5,10 @@ let counter = 0;
 let colorArray = [];
 let audioArray = [];
 
+// interval object
+let intObj = {
+  id: "",
+};
 // color array has double values so it works with the setInterval function to animate "Simon" word. Only indexes 0-3 are used by simonPlay function
 let allColors = [
   "green",
@@ -27,26 +31,80 @@ let allSounds = [
 let letterClasses = ["#s", "#i", "#m", "#o", "#n"];
 
 // create animation for "Simon" in title
-let simonColorInterval = setInterval(interval, 250);
-let j = 4;
-function interval() {
-  for (let i = 0; i < 5; i++) {
-    setTimeout(() => {
-      $(letterClasses[i]).css("color", allColors[j + i]);
-    }, 50 * i);
-  }
-  j--;
-  if (j === -1) {
-    j = 4;
+function simonColorInterval() {
+  // if (clear) {
+  //   console.log("true");
+  //   clearInterval(myInterval);
+  //   return;
+  // }
+  let myInterval = setInterval(interval, 250);
+  console.log(myInterval);
+  intObj.id = myInterval;
+  let j = 4;
+  function interval() {
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        $(letterClasses[i]).css("color", allColors[j + i]);
+      }, 50 * i);
+    }
+    j--;
+    if (j === -1) {
+      j = 4;
+    }
   }
 }
-
 // preload audio files to negate delay (doesn't always work)
 let audio = new Audio("./sounds/green.mp3");
 audio = new Audio("./sounds/blue.mp3");
 audio = new Audio("./sounds/yellow.mp3");
 audio = new Audio("./sounds/red.mp3");
 audio = new Audio("./sounds/wrong.mp3");
+
+// event listener for themes button
+$(document).ready(function () {
+  $("#themes").click(function () {
+    let menuOpacity = $(".menu").css("opacity");
+    if (menuOpacity === "0") {
+      $(".menu").css("opacity", 1);
+    } else {
+      $(".menu").css("opacity", 0);
+    }
+  });
+});
+
+// event listners for indivual theme buttons
+$(document).ready(function () {
+  $(".singleTheme").click(function (event) {
+    themeId = event.target.id;
+    console.log("event id: " + themeId);
+    $(".menu").css("opacity", 0);
+    $("#cssLink").attr("href", `${themeId}.css`);
+    changeHTML(themeId);
+  });
+});
+
+// change title of game
+function changeHTML(themeId) {
+  switch (themeId) {
+    case "simonTheme":
+      $("#title")
+        .html(`<span id="s">S</span><span id="i">I</span><span id="m">M</span
+      ><span id="o">O</span><span id="n">N</span> Memory Game`);
+      simonColorInterval();
+      break;
+    case "runeTheme":
+      $("#title").html(`R<span style="font-size: 3.5rem">une</span>S<span
+      style="font-size: 3.5rem"
+      >tone</span
+    >`);
+      // stop simon title animation
+      clearInterval(intObj.id);
+      break;
+
+    default:
+      break;
+  }
+}
 
 // start button event listener
 function listenForStart() {
@@ -71,12 +129,10 @@ function listenForPlayer() {
 // simonPlay function
 function simonPlay() {
   counter = 0;
-  console.log(counter, colorArray, audioArray);
   // random number 0-3 to choose random index from colorArray
   let rndNum = Math.floor(Math.random() * 4);
 
   // push random color to colorArray and audioArray
-  console.log("colorArray: " + colorArray);
   colorArray.push(allColors[rndNum]);
   audioArray.push(allSounds[rndNum]);
 
@@ -103,7 +159,6 @@ function simonPlay() {
 
 //   action when player clicks color (check vs simon pattern)
 function playerPlay(event) {
-  console.log("event id: " + event.target.id);
   $("#" + event.target.id).addClass("player-pressed");
   setTimeout(() => {
     $("#" + event.target.id).removeClass("player-pressed");
@@ -121,8 +176,6 @@ function playerPlay(event) {
     gameOver();
     return;
   }
-  console.log("counter: " + counter);
-  console.log(colorArray.length - 1);
   // check if color clicked is last color in pattern, update result and score, and let Simon play
   if (counter === colorArray.length - 1) {
     $(".btn").off("click");

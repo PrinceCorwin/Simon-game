@@ -9,6 +9,25 @@ let audioArray = [];
 let intObj = {
   id: "",
 };
+
+// HTML object (values to be changed when theme is changed)
+let htmlObj = {
+  simonTitle: `<span id="s">S</span><span id="i">I</span><span id="m">M</span
+  ><span id="o">O</span><span id="n">N</span> Memory Game`,
+  runeTitle: `R<span style="font-size: 3.5rem">une</span>S<span
+  style="font-size: 3.5rem"
+  >tone</span
+>`,
+  simonFavIcoLink: "images/favicon/simon-fav/favicon.ico",
+  runeFavIcoLink: "images/favicon/runestone-fav/favicon.ico",
+  simonAtiFavLink: "images/favicon/simon-fav/apple-touch-icon.png",
+  runeAtiFavLink: "images/favicon/runestone-fav/apple-touch-icon.png",
+  simonIcon32Link: "images/favicon/simon-fav/favicon-32x32.png",
+  runeIcon32Link: "images/favicon/runestone-fav/favicon-32x32.png",
+  simonIcon16Link: "images/favicon/simon-fav/favicon-16x16.png",
+  runeIcon16Link: "images/favicon/runestone-fav/favicon-16x16.png",
+};
+
 // color array has double values so it works with the setInterval function to animate "Simon" word. Only indexes 0-3 are used by simonPlay function
 let allColors = [
   "green",
@@ -83,20 +102,23 @@ $(document).ready(function () {
   });
 });
 
-// change title of game
+// change html values based on selected theme
 function changeHTML(themeId) {
   switch (themeId) {
     case "simonTheme":
-      $("#title")
-        .html(`<span id="s">S</span><span id="i">I</span><span id="m">M</span
-      ><span id="o">O</span><span id="n">N</span> Memory Game`);
+      $("#title").html(htmlObj.simonTitle);
+      $("#FavIcoLink").attr("href", htmlObj.simonFavIcoLink);
+      $("#atiFavLink").attr("href", htmlObj.simonAtiFavLink);
+      $("#icon32FavLink").attr("href", htmlObj.simonIcon32Link);
+      $("#icon16FavLink").attr("href", htmlObj.simonIcon16Link);
       simonColorInterval();
       break;
     case "runeTheme":
-      $("#title").html(`R<span style="font-size: 3.5rem">une</span>S<span
-      style="font-size: 3.5rem"
-      >tone</span
-    >`);
+      $("#title").html(htmlObj.runeTitle);
+      $("#FavIcoLink").attr("href", htmlObj.runeFavIcoLink);
+      $("#atiFavLink").attr("href", htmlObj.runeAtiFavLink);
+      $("#icon32FavLink").attr("href", htmlObj.runeIcon32Link);
+      $("#icon16FavLink").attr("href", htmlObj.runeIcon16Link);
       // stop simon title animation
       clearInterval(intObj.id);
       break;

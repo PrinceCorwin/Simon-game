@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Simon Memory Game</title>
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <title id="page-title">RuneStone Raider</title>
+    <link
+      id="favIcoLink"
+      rel="shortcut icon"
+      type="image/ico"
+      href="images/favicon/favicon.ico"
+    />
+    <link
+      id="atiFavLink"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/favicon/apple-touch-icon.png"
+    />
+    <link
+      id="icon32FavLink"
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon/favicon-32x32.png"
+    />
+    <link
+      id="icon16FavLink"
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon/favicon-16x16.png"
+    />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -10,26 +35,10 @@
       src="https://kit.fontawesome.com/6c80d95586.js"
       crossorigin="anonymous"
     ></script>
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="images/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="images/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="images/favicon/favicon-16x16.png"
-    />
+
     <!-- access to webmanifest currently blocked on my site. Need to resolve -->
-    <!-- <link rel="manifest" href="https://amalfimakesit.com/site.webmanifest" /> -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="https://amalfimakesit.com/site.webmanifest" />
+    <link id="cssLink" rel="stylesheet" href="runeTheme.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css?family=Press+Start+2P"
@@ -41,39 +50,61 @@
     />
   </head>
   <body>
-    <div class="social-links">
-      <a id="home" href="https://www.amalfimakesit.com">HOME</a>
-      <a href="https://www.facebook.com/AmalfiMakesIt"
-        ><i class="fab fa-facebook fa-2x"></i
-      ></a>
-      <a href="https://www.linkedin.com/in/steve-corwin-amalfitano-79345698/"
-        ><i class="fab fa-linkedin fa-2x"></i
-      ></a>
-      <a href="https://www.instagram.com/amalfi.makes.it/"
-        ><i class="fab fa-instagram fa-2x"></i
-      ></a>
-      <a href="https://github.com/PrinceCorwin"
-        ><i class="fab fa-github fa-2x"></i
-      ></a>
-      <a href="https://www.youtube.com/c/TribeOfOne"
-        ><i class="fab fa-youtube fa-2x"></i
-      ></a>
+    <div id="rules-btn">RULES</div>
+    <div id="rules">
+      <div id="rules-title">
+        <div>How to Play</div>
+        <i class="far fa-times-circle"></i>
+      </div>
+      <div id="rules-desc">
+        Click start and the RuneStone will light up a rune in sequence,
+        beginning with a pattern of only one light. Click on the corresponding
+        rune to complete the pattern. Then the Runestone will light up two
+        items. Click them in the correct sequence. On each turn, the RuneStone
+        will add one to the pattern. You must memorize the sequence and click
+        them in the corrrect order to win each turn. Game will end when you
+        click a rune out of sequence. Score reflects the last sequence length
+        completed. See how far you can go!
+      </div>
     </div>
     <main>
+      <div class="navbar">
+        <a id="home" href="https://www.amalfimakesit.com">HOME</a>
+        <a href="https://www.facebook.com/AmalfiMakesIt"
+          ><i class="fab fa-facebook fa-2x"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/steve-corwin-amalfitano-79345698/"
+          ><i class="fab fa-linkedin fa-2x"></i
+        ></a>
+        <a href="https://www.instagram.com/amalfi.makes.it/"
+          ><i class="fab fa-instagram fa-2x"></i
+        ></a>
+        <a href="https://github.com/PrinceCorwin"
+          ><i class="fab fa-github fa-2x"></i
+        ></a>
+        <a href="https://www.youtube.com/c/TribeOfOne"
+          ><i class="fab fa-youtube fa-2x"></i
+        ></a>
+      </div>
       <div class="container">
         <h1 id="title">
-          <span id="s">S</span><span id="i">i</span><span id="m">m</span
-          ><span id="o">o</span><span id="n">n</span> Memory Game
+          <span>R</span><span style="font-size: 3.5rem">une</span><span>S</span
+          ><span style="font-size: 3.5rem">tone</span>
         </h1>
         <div class="console-row">
           <div class="stats">
             <div class="stats-title">
-              <span class="p">P</span><span class="l">l</span
-              ><span class="a">a</span><span class="y">y</span
-              ><span class="e">e</span><span class="r">r</span
-              ><span class="s">S</span><span class="t">t</span
-              ><span class="aa">a</span><span class="tt">t</span
-              ><span class="ss">s</span>
+              <span class="red-letter">P</span
+              ><span class="green-letter">l</span
+              ><span class="yellow-letter">a</span
+              ><span class="blue-letter">y</span
+              ><span class="red-letter">e</span
+              ><span class="green-letter">r</span
+              ><span class="yellow-letter"> S</span
+              ><span class="blue-letter">t</span
+              ><span class="red-letter">a</span
+              ><span class="green-letter">t</span
+              ><span class="yellow-letter">s</span>
             </div>
             <div class="stat-row">
               <span>You Chose:</span>
@@ -86,11 +117,19 @@
             <div id="start">START</div>
           </div>
           <div class="console">
-            <div class="btn green" id="green"></div>
-            <div class="btn red" id="red"></div>
-            <div class="btn yellow" id="yellow"></div>
-            <div class="btn blue" id="blue"></div>
+            <div class="btn green" id="green">Y</div>
+            <div class="btn red" id="red">O</div>
+            <div class="btn yellow" id="yellow">J</div>
+            <div class="btn blue" id="blue">Z</div>
           </div>
+        </div>
+      </div>
+      <div class="main-menu">
+        <div id="themes">THEMES</div>
+        <div class="menu">
+          <div class="singleTheme" id="runeTheme">RUNESTONE</div>
+          <div class="singleTheme" id="simonTheme">SIMON</div>
+          <div class="singleTheme" id="threeTheme">THREE</div>
         </div>
       </div>
     </main>
@@ -127,7 +166,7 @@
       </div>
       <div class="footer-logo">
         <a href="https://amalfimakesit.com/">
-          <img src="images/AmalfiMakesItWebDev.svg" alt="Amalfi Makes It logo"
+          <img src="images/AMIfooter.svg" alt="Amalfi Makes It logo"
         /></a>
       </div>
     </footer>

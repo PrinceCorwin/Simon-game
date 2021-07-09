@@ -1,0 +1,485 @@
+/* roots and customs */
+:root {
+  --clr-primary: rgb(228, 228, 228);
+  --clr-yellow: rgb(248, 252, 5);
+  --clr-red: rgb(255, 0, 149);
+  --clr-blue: rgb(0, 247, 255);
+  --clr-green: rgb(5, 228, 5);
+  --ff-primary: "runestone", cursive;
+  --ff-accent: "Ubuntu", sans-serif;
+}
+
+@font-face {
+  font-family: "runestone";
+  src: url("fonts/norse-webfont.woff2") format("woff2"),
+    url("fonts/norse-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "runes";
+  src: url("fonts/rune-webfont.woff2") format("woff2"),
+    url("fonts/rune-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bradley";
+  src: url("fonts/bradhitc-webfont.woff2") format("woff2"),
+    url("fonts/bradhitc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: var(--clr-primary);
+  background-image: url("images/ancientTomb.png");
+  background-size: cover;
+  font-family: var(--ff-accent);
+}
+
+main {
+  width: 100%;
+  display: flex;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.stats {
+  backdrop-filter: blur(5px);
+  font-family: var(--ff-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 15px 15px 15px;
+  border-top: solid black 2px;
+  border-right: solid rgb(199, 185, 164) 2px;
+  border-bottom: solid rgb(199, 185, 164) 2px;
+  border-left: solid black 2px;
+  border-radius: 5px;
+}
+
+.stats-title {
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  letter-spacing: 2px;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 246px;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.stat-row {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#title {
+  position: relative;
+  color: gold;
+  text-align: center;
+  font-family: var(--ff-primary);
+  font-size: 5rem;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 2px rgb(85, 10, 10), -1px -1px white;
+  margin-bottom: 40px;
+}
+
+#title::before {
+  content: "RAIDER";
+  color: var(--clr-primary);
+  font-family: bradley;
+  font-size: 2.5rem;
+  font-style: italic;
+  text-shadow: 2px 2px rgb(136, 2, 2), -2px -2px darkred;
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  letter-spacing: 5px;
+  transform: translateX(-50%);
+}
+
+#start {
+  position: relative;
+  margin-top: 20px;
+  padding: 5px 20px;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 1px blanchedalmond;
+  background: linear-gradient(to top, black, rgb(77, 77, 77));
+  box-shadow: 2px 2px 5px white;
+  color: var(--clr-red);
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.noStart {
+  visibility: hidden;
+}
+
+#start:hover {
+  background: linear-gradient(to bottom, black, rgb(77, 77, 77));
+  text-shadow: 1px 1px 1px var(--clr-red);
+  color: gold;
+}
+
+.console-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.console {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin-left: 80px;
+}
+
+.btn {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 10rem;
+  font-family: runes;
+  text-shadow: 0 0 15px var(--clr-primary);
+  transition: all 0.15s ease-in-out;
+}
+
+.green {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--clr-green);
+}
+
+.red {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--clr-red);
+}
+
+.blue {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--clr-blue);
+}
+
+.yellow {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: var(--clr-yellow);
+}
+.green-letter {
+  color: var(--clr-green);
+}
+.red-letter {
+  color: var(--clr-red);
+}
+.blue-letter {
+  color: var(--clr-blue);
+}
+.yellow-letter {
+  color: var(--clr-yellow);
+}
+
+.pressed,
+.player-pressed {
+  opacity: 1;
+  text-shadow: 0 0 15px white;
+}
+.green.pressed,
+.blue.pressed {
+  transform: translateX(-50%) scale(1.5);
+}
+.red.pressed,
+.yellow.pressed {
+  transform: translateY(-50%) scale(1.5);
+}
+
+.green.player-pressed,
+.blue.player-pressed {
+  transform: translateX(-50%) scale(0.8);
+}
+.red.player-pressed,
+.yellow.player-pressed {
+  transform: translateY(-50%) scale(0.8);
+}
+
+/* navbar css */
+.navbar {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ff-primary);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#home {
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#home:hover {
+  color: gold;
+}
+
+#rules-btn {
+  position: absolute;
+  z-index: 500;
+  top: 10px;
+  right: 15rem;
+  cursor: pointer;
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+}
+#rules-btn:hover {
+  color: gold;
+}
+#rules {
+  z-index: 1000;
+  background-color: black;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  padding: 10px;
+  transition: all 0.25s ease-in-out;
+  font-size: 1.1rem;
+  /* using diplay: none so it doesn't interfere with other element hover effects */
+  display: none;
+}
+#rules-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: gold;
+}
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
+  cursor: pointer;
+}
+#themes {
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+#themes:hover {
+  color: gold;
+}
+.menu {
+  font-size: 1rem;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+.singleTheme {
+  padding: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(51, 51, 51),
+    rgb(114, 114, 114)
+  );
+}
+#runeTheme {
+  color: gold;
+  border: solid 1px white;
+}
+#simonTheme {
+  letter-spacing: 1px;
+  color: cyan;
+}
+#threeTheme {
+  color: magenta;
+}
+/* fab is FA icon class */
+.fab {
+  margin-top: 20px;
+  color: gold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.fab:hover {
+  color: var(--clr-primary);
+}
+/* footer start */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #dcdcdc;
+  background-color: black;
+}
+footer > div {
+  padding: 1rem;
+}
+.footer-contact {
+  color: #dcdcdc;
+}
+.footer-contact-links {
+  display: flex;
+  flex-direction: column;
+}
+footer a,
+footer .fab,
+footer .fas,
+footer img {
+  color: lightblue;
+  transition: all 0.2s ease-in-out;
+}
+footer a:hover,
+footer .fab:hover,
+footer .fas:hover,
+footer img:hover {
+  transform: scale(1.1);
+  color: yellow;
+}
+.footer-logo {
+  width: 200px;
+}
+.footer-social {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.copyright {
+  padding: 0.5rem 0;
+}
+/* footer end */
+@media screen and (max-width: 1000px) {
+  .main-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-contact {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  main {
+    flex-direction: column;
+  }
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(66, 40, 40),
+      rgb(20, 17, 17)
+    );
+  }
+  .navbar .fab {
+    display: none;
+  }
+
+  #home {
+    letter-spacing: 2px;
+    padding: 0;
+    align-self: center;
+    font-size: 1.5rem;
+  }
+  .fab {
+    font-size: 1.5rem;
+  }
+  #rules-btn {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .container {
+    justify-content: flex-start;
+    padding: 10px 0 0 0;
+    margin-top: 0;
+  }
+  .stats {
+    margin-top: 5px;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+  }
+  .stats-title {
+    position: absolute;
+    visibility: hidden;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+  }
+  .stat-row {
+    font-size: 1em;
+  }
+  #title {
+    font-size: 5rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+  #start {
+    margin-top: 5px;
+    letter-spacing: 2px;
+    font-size: 1rem;
+  }
+  .console {
+    width: 95vw;
+    height: 300px;
+    margin-left: 0;
+  }
+  .console-row {
+    flex-direction: column-reverse;
+  }
+  #themes {
+    padding-right: 0;
+  }
+  .btn {
+    font-size: 5rem;
+    height: 7rem;
+    width: 7rem;
+    padding: 1rem 1.8rem;
+    background: black;
+    border-radius: 50%;
+  }
+}

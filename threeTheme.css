@@ -1,8 +1,36 @@
 /* roots and customs */
 :root {
   --clr-primary: rgb(228, 228, 228);
-  --ff-primary: "Big Shoulders Stencil Display", cursive;
+  --clr-yellow: rgb(248, 252, 5);
+  --clr-red: rgb(255, 0, 149);
+  --clr-blue: rgb(0, 247, 255);
+  --clr-green: rgb(5, 228, 5);
+  --ff-primary: "runestone", cursive;
   --ff-accent: "Ubuntu", sans-serif;
+}
+
+@font-face {
+  font-family: "runestone";
+  src: url("fonts/norse-webfont.woff2") format("woff2"),
+    url("fonts/norse-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "runes";
+  src: url("fonts/rune-webfont.woff2") format("woff2"),
+    url("fonts/rune-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bradley";
+  src: url("fonts/bradhitc-webfont.woff2") format("woff2"),
+    url("fonts/bradhitc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 *,
@@ -12,57 +40,48 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   color: var(--clr-primary);
-  background-image: linear-gradient(
-    to top left,
-    rgb(63, 41, 41),
-    black,
-    rgb(77, 77, 77)
-  );
-  background-size: auto;
+  background-image: url("images/ancientTomb.png");
+  background-size: cover;
   font-family: var(--ff-accent);
-  /* display: inline-block; */
 }
+
 main {
-  /* background-color: white; */
   width: 100%;
   display: flex;
 }
+
 .container {
-  /* margin: auto; */
+  position: relative;
   width: 100%;
-  /* background-color: white; */
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  /* margin-top: 40px; */
+  justify-content: space-around;
 }
-.stats {
-  background-image: linear-gradient(
-    to top,
-    rgb(63, 41, 41),
-    black,
-    rgb(77, 77, 77)
-  );
-  box-shadow: 5px 5px 10px rgb(209, 209, 209);
 
+.stats {
+  backdrop-filter: blur(5px);
   font-family: var(--ff-accent);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   padding: 0 15px 15px 15px;
-  border-top: solid rgb(63, 55, 55) 2px;
-  border-right: solid rgb(202, 202, 202) 2px;
-  border-bottom: solid rgb(202, 202, 202) 2px;
+  border-top: solid black 2px;
+  border-right: solid rgb(199, 185, 164) 2px;
+  border-bottom: solid rgb(199, 185, 164) 2px;
   border-left: solid black 2px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
+
 .stats-title {
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  letter-spacing: 2px;
   border-radius: 10px 10px 0 0;
   padding: 5px 0;
   text-align: center;
@@ -70,44 +89,10 @@ main {
   font-size: 2.5em;
   margin-bottom: 10px;
 }
-.p {
-  color: red;
-}
-.l {
-  color: rgb(31, 226, 31);
-}
-.a {
-  color: yellow;
-}
-.y {
-  color: rgb(53, 53, 255);
-}
-.e {
-  color: red;
-}
-.r {
-  color: rgb(31, 226, 31);
-  margin-right: 10px;
-}
-.s {
-  color: yellow;
-}
-.t {
-  color: blue;
-}
-.aa {
-  color: red;
-}
-.tt {
-  color: rgb(31, 226, 31);
-}
-.ss {
-  color: yellow;
-}
+
 .stat-row {
   font-size: 1.5em;
   margin-bottom: 10px;
-
   width: 100%;
   display: flex;
   align-items: center;
@@ -115,112 +100,145 @@ main {
 }
 
 #title {
+  position: relative;
+  color: gold;
   text-align: center;
   font-family: var(--ff-primary);
-  font-size: 3rem;
+  font-size: 5rem;
   letter-spacing: 3px;
+  text-shadow: 3px 3px 2px rgb(85, 10, 10), -1px -1px white;
   margin-bottom: 40px;
 }
+
+#title::before {
+  content: "RAIDER";
+  color: var(--clr-primary);
+  font-family: bradley;
+  font-size: 2.5rem;
+  font-style: italic;
+  text-shadow: 2px 2px rgb(136, 2, 2), -2px -2px darkred;
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  letter-spacing: 5px;
+  transform: translateX(-50%);
+}
+
 #start {
+  position: relative;
   margin-top: 20px;
   padding: 5px 20px;
   letter-spacing: 2px;
   text-shadow: 1px 1px 1px blanchedalmond;
-  background-image: linear-gradient(to top, black, rgb(77, 77, 77));
+  background: linear-gradient(to top, black, rgb(77, 77, 77));
   box-shadow: 2px 2px 5px white;
-  border-radius: 30px;
-  color: red;
+  color: var(--clr-red);
   font-family: var(--ff-primary);
+  font-weight: 900;
   font-size: 2rem;
   cursor: pointer;
 }
+
 .noStart {
   visibility: hidden;
 }
+
 #start:hover {
-  background-image: linear-gradient(to bottom, black, rgb(77, 77, 77));
+  background: linear-gradient(to bottom, black, rgb(77, 77, 77));
+  text-shadow: 1px 1px 1px var(--clr-red);
+  color: gold;
 }
+
 .console-row {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .console {
-  background-color: black;
-  box-shadow: 0 0 20px 10px rgb(155, 155, 155);
-  border-radius: 50%;
-  display: grid;
-  grid-template-columns: 200px 200px;
+  position: relative;
   width: 400px;
   height: 400px;
   margin-left: 80px;
 }
 
 .btn {
+  position: absolute;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.6;
+  font-size: 10rem;
+  font-family: runes;
+  text-shadow: 0 0 15px var(--clr-primary);
+  transition: all 0.15s ease-in-out;
 }
-.green,
-.red,
-.yellow,
-.blue {
-  transition: transform 0.15s ease-in-out;
-}
+
 .green {
-  background-color: rgb(2, 196, 2);
-  border-radius: 100% 10px 10px 10px;
-  border: solid black 5px;
-  box-shadow: inset 1px 1px 5px rgb(2, 216, 2), inset -1px -1px 10px black;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--clr-green);
 }
 
 .red {
-  background-color: red;
-  border: solid black 5px;
-  box-shadow: inset 1px 1px 5px rgb(224, 126, 126), inset -1px -1px 10px black;
-  border-radius: 10px 100% 10px 10px;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--clr-red);
 }
 
 .blue {
-  background-color: blue;
-  border: solid black 5px;
-  border-radius: 10px 10px 100% 10px;
-  box-shadow: inset 1px 1px 5px rgb(81, 149, 252), inset -1px -1px 10px black;
-}
-.yellow {
-  background-color: yellow;
-  border: solid black 5px;
-  border-radius: 10px 10px 10px 100%;
-  box-shadow: inset 1px 1px 5px rgb(248, 248, 131), inset -1px -1px 10px black;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--clr-blue);
 }
 
+.yellow {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: var(--clr-yellow);
+}
 .green-letter {
-  color: green;
+  color: var(--clr-green);
 }
 .red-letter {
-  color: red;
+  color: var(--clr-red);
 }
 .blue-letter {
-  color: blue;
+  color: var(--clr-blue);
 }
 .yellow-letter {
-  color: yellow;
+  color: var(--clr-yellow);
 }
 
-.pressed {
-  box-shadow: 0 0 20px white, inset 1px 1px 5px rgb(75, 73, 73);
-  opacity: 1;
-  transform: scale(1.05);
-}
+.pressed,
 .player-pressed {
-  box-shadow: inset 1px 1px 15px 5px rgb(75, 73, 73);
   opacity: 1;
-  transform: scale(0.95);
+  text-shadow: 0 0 15px white;
 }
+.green.pressed,
+.blue.pressed {
+  transform: translateX(-50%) scale(1.5);
+}
+.red.pressed,
+.yellow.pressed {
+  transform: translateY(-50%) scale(1.5);
+}
+
+.green.player-pressed,
+.blue.player-pressed {
+  transform: translateX(-50%) scale(0.8);
+}
+.red.player-pressed,
+.yellow.player-pressed {
+  transform: translateY(-50%) scale(0.8);
+}
+
 /* navbar css */
 .navbar {
   padding: 10px;
-  /* background-color: darkgray; */
   display: flex;
   flex-direction: column;
   font-family: var(--ff-primary);
@@ -230,38 +248,68 @@ main {
 
 #home {
   font-family: var(--ff-primary);
+  font-weight: 900;
   color: var(--clr-primary);
   font-size: 1.5rem;
   text-decoration: none;
 }
 #home:hover {
-  color: rgb(2, 196, 2);
+  color: gold;
+}
+
+#rules-btn {
+  position: absolute;
+  z-index: 500;
+  top: 10px;
+  right: 15rem;
+  cursor: pointer;
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+}
+#rules-btn:hover {
+  color: gold;
+}
+#rules {
+  z-index: 1000;
+  background-color: black;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  padding: 10px;
+  transition: all 0.25s ease-in-out;
+  font-size: 1.1rem;
+  /* using diplay: none so it doesn't interfere with other element hover effects */
+  display: none;
+}
+#rules-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: gold;
 }
 .main-menu {
-  /* background-color: white; */
-  /* width: 0; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 10px;
-  /* position: relative; */
   cursor: pointer;
 }
 #themes {
   font-family: var(--ff-primary);
+  font-weight: 900;
   color: var(--clr-primary);
   font-size: 1.5rem;
   text-decoration: none;
 }
+#themes:hover {
+  color: gold;
+}
 .menu {
-  background-color: grey;
-  /* padding: 10px; */
   font-size: 1rem;
-  /* position: absolute; */
   opacity: 0;
-  /* visibility: hidden; */
-  /* top: 3rem; */
-  /* right: 0; */
   transition: all 0.25s ease-in-out;
 }
 .singleTheme {
@@ -278,22 +326,21 @@ main {
 #simonTheme {
   letter-spacing: 1px;
   color: cyan;
-  border: solid 1px white;
-  /* text-shadow: 1px 1px 1px red; */
 }
 #threeTheme {
   color: magenta;
+  border: solid 1px white;
 }
 /* fab is FA icon class */
 .fab {
   margin-top: 20px;
-  color: rgb(2, 196, 2);
+  color: gold;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .fab:hover {
-  color: blue;
+  color: var(--clr-primary);
 }
 /* footer start */
 footer {
@@ -317,7 +364,6 @@ footer a,
 footer .fab,
 footer .fas,
 footer img {
-  /* text-decoration: none; */
   color: lightblue;
   transition: all 0.2s ease-in-out;
 }
@@ -372,8 +418,6 @@ footer img:hover {
   }
   .navbar .fab {
     display: none;
-    margin-top: 0;
-    /* margin-left: 5px; */
   }
 
   #home {
@@ -385,16 +429,20 @@ footer img:hover {
   .fab {
     font-size: 1.5rem;
   }
+  #rules-btn {
+    right: 50%;
+    transform: translateX(50%);
+  }
   .container {
     justify-content: flex-start;
     padding: 10px 0 0 0;
     margin-top: 0;
   }
   .stats {
-    margin-top: 20px;
+    margin-top: 5px;
     width: 250px;
-
-    padding: 10px 5px 15px 5px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
   }
   .stats-title {
     position: absolute;
@@ -406,9 +454,9 @@ footer img:hover {
     font-size: 1em;
   }
   #title {
-    font-size: 2.5rem;
+    font-size: 5rem;
     letter-spacing: 2px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
   }
   #start {
     margin-top: 5px;
@@ -416,12 +464,22 @@ footer img:hover {
     font-size: 1rem;
   }
   .console {
-    grid-template-columns: 150px 150px;
-    width: 300px;
+    width: 95vw;
     height: 300px;
     margin-left: 0;
   }
   .console-row {
     flex-direction: column-reverse;
+  }
+  #themes {
+    padding-right: 0;
+  }
+  .btn {
+    font-size: 5rem;
+    height: 7rem;
+    width: 7rem;
+    padding: 1rem 1.8rem;
+    background: black;
+    border-radius: 50%;
   }
 }

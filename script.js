@@ -1,6 +1,5 @@
 // algorithm
 // global variables
-
 let counter = 0;
 let colorArray = [];
 let audioArray = [];
@@ -11,21 +10,30 @@ let intObj = {
 };
 
 // HTML object (values to be changed when theme is changed)
+// let htmlObj = {
+//   simonPageTitle: "Simon Memory Game",
+//   runePageTitle: "RuneStone Raider",
+//   simonTitle: `<span id="s">S</span><span id="i">I</span><span id="m">M</span
+//   ><span id="o">O</span><span id="n">N</span> Memory Game`,
+//   runeTitle: `R<span style="font-size: 3.5rem">une</span>S<span
+//   style="font-size: 3.5rem"
+//   >tone</span
+// >`,
+// };
+
 let htmlObj = {
-  simonTitle: `<span id="s">S</span><span id="i">I</span><span id="m">M</span
-  ><span id="o">O</span><span id="n">N</span> Memory Game`,
-  runeTitle: `R<span style="font-size: 3.5rem">une</span>S<span
-  style="font-size: 3.5rem"
-  >tone</span
->`,
-  simonFavIcoLink: "images/favicon/simon-fav/favicon.ico",
-  runeFavIcoLink: "images/favicon/runestone-fav/favicon.ico",
-  simonAtiFavLink: "images/favicon/simon-fav/apple-touch-icon.png",
-  runeAtiFavLink: "images/favicon/runestone-fav/apple-touch-icon.png",
-  simonIcon32Link: "images/favicon/simon-fav/favicon-32x32.png",
-  runeIcon32Link: "images/favicon/runestone-fav/favicon-32x32.png",
-  simonIcon16Link: "images/favicon/simon-fav/favicon-16x16.png",
-  runeIcon16Link: "images/favicon/runestone-fav/favicon-16x16.png",
+  simonTheme: {
+    pageTitle: "Simon Memory Game",
+    gameTitle: `<span id="s">S</span><span id="i">I</span><span id="m">M</span><span id="o">O</span><span id="n">N</span> Memory Game`,
+  },
+  runeTheme: {
+    pageTitle: "RuneStone Raider",
+    gameTitle: `R<span style="font-size: 3.5rem">une</span>S<span style="font-size: 3.5rem">tone</span>`,
+  },
+  threeTheme: {
+    pageTitle: "RuneStone Raider",
+    gameTitle: `R<span style="font-size: 3.5rem">une</span>S<span style="font-size: 3.5rem">tone</span>`,
+  },
 };
 
 // color array has double values so it works with the setInterval function to animate "Simon" word. Only indexes 0-3 are used by simonPlay function
@@ -48,6 +56,14 @@ let allSounds = [
   "./sounds/blue.mp3",
 ];
 let letterClasses = ["#s", "#i", "#m", "#o", "#n"];
+
+// event listeners for rules visibility
+$("#rules-btn").click(function () {
+  $("#rules").toggle();
+});
+$(".fa-times-circle").click(function () {
+  $("#rules").toggle();
+});
 
 // create animation for "Simon" in title
 function simonColorInterval() {
@@ -72,15 +88,16 @@ function simonColorInterval() {
     }
   }
 }
-// preload audio files to negate delay (doesn't always work)
+// preload audio file to negate delay (doesn't always work)
 let audio = new Audio("./sounds/green.mp3");
-audio = new Audio("./sounds/blue.mp3");
-audio = new Audio("./sounds/yellow.mp3");
-audio = new Audio("./sounds/red.mp3");
-audio = new Audio("./sounds/wrong.mp3");
+// audio = new Audio("./sounds/blue.mp3");
+// audio = new Audio("./sounds/yellow.mp3");
+// audio = new Audio("./sounds/red.mp3");
+// audio = new Audio("./sounds/wrong.mp3");
 
 // event listener for themes button
 $(document).ready(function () {
+  audio.play();
   $("#themes").click(function () {
     let menuOpacity = $(".menu").css("opacity");
     if (menuOpacity === "0") {
@@ -104,27 +121,14 @@ $(document).ready(function () {
 
 // change html values based on selected theme
 function changeHTML(themeId) {
-  switch (themeId) {
-    case "simonTheme":
-      $("#title").html(htmlObj.simonTitle);
-      $("#FavIcoLink").attr("href", htmlObj.simonFavIcoLink);
-      $("#atiFavLink").attr("href", htmlObj.simonAtiFavLink);
-      $("#icon32FavLink").attr("href", htmlObj.simonIcon32Link);
-      $("#icon16FavLink").attr("href", htmlObj.simonIcon16Link);
-      simonColorInterval();
-      break;
-    case "runeTheme":
-      $("#title").html(htmlObj.runeTitle);
-      $("#FavIcoLink").attr("href", htmlObj.runeFavIcoLink);
-      $("#atiFavLink").attr("href", htmlObj.runeAtiFavLink);
-      $("#icon32FavLink").attr("href", htmlObj.runeIcon32Link);
-      $("#icon16FavLink").attr("href", htmlObj.runeIcon16Link);
-      // stop simon title animation
-      clearInterval(intObj.id);
-      break;
-
-    default:
-      break;
+  $("#page-title").text(htmlObj[themeId].pageTitle);
+  $("#title").html(htmlObj[themeId].gameTitle);
+  if (themeId === "simonTheme") {
+    // start simon title animation
+    simonColorInterval();
+  } else {
+    // stop simon title animation
+    clearInterval(intObj.id);
   }
 }
 
@@ -193,7 +197,10 @@ function playerPlay(event) {
     // on wrong click, play wrong.mp3 and end game
     audio = new Audio("./sounds/wrong.mp3");
     audio.play();
-    $("#result").text("POORLY!");
+
+    $("#result")
+      .css({ color: "rgb(255, 0, 149)", "text-shadow": "1px 1px white" })
+      .text("POORLY!");
     $("#score").text(`${colorArray.length - 1}`);
     gameOver();
     return;
@@ -202,7 +209,9 @@ function playerPlay(event) {
   if (counter === colorArray.length - 1) {
     $(".btn").off("click");
     // update player stats
-    $("#result").text("WISELY!");
+    $("#result")
+      .css({ color: "rgb(5, 228, 5)", "text-shadow": "1px 1px white" })
+      .text("WISELY!");
     $("#score").text(`${counter + 1}`);
     simonPlay();
     return;

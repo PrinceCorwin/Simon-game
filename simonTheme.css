@@ -117,6 +117,7 @@ main {
   width: 400px;
   height: 400px;
   margin-left: 80px;
+  /* transform: rotate(45deg); */
 }
 
 .btn {
@@ -127,6 +128,7 @@ main {
 .red,
 .yellow,
 .blue {
+  color: transparent;
   transition: transform 0.15s ease-in-out;
 }
 .green {
@@ -196,6 +198,41 @@ main {
   text-decoration: none;
 }
 #home:hover {
+  color: rgb(2, 196, 2);
+}
+#rules-btn {
+  /* background-color: black; */
+  position: absolute;
+  z-index: 500;
+  top: 10px;
+  right: 15rem;
+  cursor: pointer;
+  font-family: var(--ff-primary);
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+}
+#rules-btn:hover {
+  color: rgb(2, 196, 2);
+}
+#rules {
+  z-index: 1000;
+  background-color: black;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  padding: 10px;
+  /* opacity: 0; */
+  transition: all 0.25s ease-in-out;
+  font-size: 1.1rem;
+  /* using diplay: none so it doesn't interfere with other element hover effects */
+  display: none;
+}
+#rules-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
   color: rgb(2, 196, 2);
 }
 .main-menu {
@@ -329,7 +366,13 @@ footer img:hover {
     display: none;
     margin-top: 0;
   }
-
+  #rules-btn {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  #themes {
+    padding-right: 0;
+  }
   #home {
     letter-spacing: 2px;
     padding: 0;
@@ -347,8 +390,8 @@ footer img:hover {
   .stats {
     margin-top: 20px;
     width: 250px;
-
-    padding: 10px 5px 15px 5px;
+    box-shadow: none;
+    padding: 10px 15px;
   }
   .stats-title {
     position: absolute;

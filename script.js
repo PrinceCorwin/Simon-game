@@ -88,16 +88,9 @@ function simonColorInterval() {
     }
   }
 }
-// preload audio file to negate delay (doesn't always work)
-let audio = new Audio("./sounds/green.mp3");
-// audio = new Audio("./sounds/blue.mp3");
-// audio = new Audio("./sounds/yellow.mp3");
-// audio = new Audio("./sounds/red.mp3");
-// audio = new Audio("./sounds/wrong.mp3");
 
 // event listener for themes button
 $(document).ready(function () {
-  audio.play();
   $("#themes").click(function () {
     let menuOpacity = $(".menu").css("opacity");
     if (menuOpacity === "0") {
@@ -145,7 +138,7 @@ function listenForStart() {
 
 listenForStart();
 
-// event listener for player clisks on colors
+// event listener for player clicks on colors
 function listenForPlayer() {
   $(".btn").click(function (event) {
     playerPlay(event);
@@ -167,8 +160,8 @@ function simonPlay() {
   for (let i = 0; i < colorArray.length; i++) {
     setTimeout(() => {
       $("#" + colorArray[i]).addClass("pressed");
-      audio = new Audio(audioArray[i]);
-      audio.play();
+      $(`#${colorArray[i]}Sound`).trigger("play");
+
       setTimeout(() => {
         $("." + colorArray[i]).removeClass("pressed");
       }, 200);
@@ -191,8 +184,7 @@ function playerPlay(event) {
   }, 200);
   // if color clicked is correct, play corresponding sound
   if (event.target.id === colorArray[counter]) {
-    audio = new Audio("./sounds/" + event.target.id + ".mp3");
-    audio.play();
+    $(`#${event.target.id}Sound`).trigger("play");
   } else {
     // on wrong click, play wrong.mp3 and end game
     audio = new Audio("./sounds/wrong.mp3");

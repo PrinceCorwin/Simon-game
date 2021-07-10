@@ -50,6 +50,17 @@
     />
   </head>
   <body>
+    <!-- preload audio files to hopefully negate pause when first sound plays -->
+    <audio id="greenSound" preload="auto">
+      <source src="sounds/green.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="blueSound" preload="auto">
+      <source src="sounds/blue.mp3" type="audio/mpeg" /></audio
+    ><audio id="redSound" preload="auto">
+      <source src="sounds/red.mp3" type="audio/mpeg" /></audio
+    ><audio id="yellowSound" preload="auto">
+      <source src="sounds/yellow.mp3" type="audio/mpeg" />
+    </audio>
     <div id="rules-btn">RULES</div>
     <div id="rules">
       <div id="rules-title">
@@ -129,7 +140,7 @@
         <div class="menu">
           <div class="singleTheme" id="runeTheme">RUNESTONE</div>
           <div class="singleTheme" id="simonTheme">SIMON</div>
-          <div class="singleTheme" id="threeTheme">THREE</div>
+          <div class="singleTheme" id="threeTheme">COMING SOON</div>
         </div>
       </div>
     </main>
